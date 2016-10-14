@@ -35,7 +35,8 @@ $nc.fn.codemirror = function (init_options) {
                 lineNumbers: true,
                 electricChars: false,
                 mode: mode,
-                indentWithTabs: false,
+                indentWithTabs: true, //scorn
+                indentUnit: 4, //scorn
                 matchBrackets: true,
                 smartIndent: false
                 //iOSselection: false
@@ -100,14 +101,6 @@ $nc.fn.codemirror = function (init_options) {
                 },
                 "Ctrl-F11": function (editor) {
                     $nc(el).closest('.cm_wrapper').find('.option_fullscreen input').trigger('click');
-                },
-                "Tab": function (editor) {
-					if (editor.somethingSelected()) {
-						editor.indentSelection("add");
-					}
-					else {
-						editor.replaceSelection("    ", "end");
-					}
                 }
             };
             param.onBlur = function (editor) {
